@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import AlbumFeature from './features/Song';
+import TodoFeature from './features/Todo';
+import { NavLink, Route, Switch } from 'react-router-dom';
+import HomePage from './components/HomePage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+   return (
+      <div className="App">
+         <NavLink className="btn-link" activeClassName="btn-link__active" to="/todos">
+            Go Todo
+         </NavLink>
+         <NavLink className="btn-link" activeClassName="btn-link__active" to="/albums">
+            Go Album
+         </NavLink>
+         <Switch>
+            <Route path="/" component={HomePage} exact />
+            <Route path="/todos" component={TodoFeature} />
+            <Route path="/albums" component={AlbumFeature} />
+         </Switch>
+      </div>
+   );
+};
 
 export default App;
